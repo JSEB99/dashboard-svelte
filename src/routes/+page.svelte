@@ -92,13 +92,13 @@
 	}
 	onMount(obtenerMenorTiempo);
 </script>
-<div class="container">
 
+<div class="container">
 	<header class="headercyber">
 		<h1 class="headercyber__title">CyberSecurity Attendance Analytics</h1>
 		<nav>
 			<div class="event">
-				<label for="event-selector" id="label-selector" class="event__title"> 
+				<label for="event-selector" id="label-selector" class="event__title">
 					Selecciona un Evento <br />
 					<span class="event__click">Dando Click</span>
 				</label>
@@ -107,39 +107,37 @@
 					class="event__select"
 					bind:value={valorSelect}
 					on:change={() => {
-					void updateData();
+						void updateData();
 					}}
-					>
+				>
 					<option value="06">Evento 06</option>
 					<option value="08">Evento 08</option>
 					<option value="13">Evento 13</option>
 					<option value="15">Evento 15</option>
 				</select>
-				</div>
+			</div>
 		</nav>
 	</header>
-	
+
 	<div class="cardmain">
-	
 		<div class="cardmain__card">
-			<div class="cardmain__card--hover"></div>
+			<div class="cardmain__card--hover" />
 			<h2 class="card__number">{total}</h2>
 			<h2 class="card__title">Número de Asistentes</h2>
 		</div>
-	
+
 		<div class="cardmain__card">
-			<div class="cardmain__card--hover"></div>
+			<div class="cardmain__card--hover" />
 			<h2 class="card__number">{promedio}</h2>
 			<h2 class="card__title">Duración promedio</h2>
 		</div>
-	
-	
+
 		<div class="cardmain__card">
-			<div class="cardmain__card--hover"></div>
+			<div class="cardmain__card--hover" />
 			<h2 class="card__number">{std}</h2>
 			<h2 class="card__title">Desviación estandar de la duración</h2>
 		</div>
-	
+
 		<div class="cardmain__card">
 			<span class="card2-num"
 				>{nombreCompleto}<br />{correo}<br />Duración:
@@ -147,11 +145,10 @@
 			>
 			<span class="">Menor Tiempo</span>
 		</div>
-		
-		
+
 		<!-- Agrega más tarjetas si es necesario -->
 	</div>
-	
+
 	<div class="graphics">
 		<div class="cardmain__card">
 			{#await tendenciaData}
@@ -172,9 +169,11 @@
 	</div>
 	<footer class="footer">
 		<div class="footer--center">
-			<a class="footer__credits" href="https://github.com/JSEB99">Juan Sebastian Mora Tibamoso	</a>
+			<a class="footer__credits" href="https://github.com/JSEB99" target="_blank"
+				>Juan Sebastian Mora Tibamoso
+			</a>
 			<p class="footer__email">juan.mora02@uptc.edu.co</p>
-			<figure> <img src="" alt=""></figure>
-		</div>	
+			<figure><img src="" alt="" /></figure>
+		</div>
 	</footer>
 </div>
