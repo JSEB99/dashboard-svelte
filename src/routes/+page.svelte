@@ -5,6 +5,7 @@
 	import Tendencia from '$lib/components/tendencia.svelte';
 	import Piechart from '$lib/components/piechart.svelte';
 	import '../styles/style.css';
+	import Icon from '../assets/img/git.png';
 
 	let datasetInfo: DatasetInfo;
 
@@ -139,18 +140,19 @@
 		</div>
 
 		<div class="cardmain__card">
-			<span class="card2-num"
+			<div class="cardmain__card--hover" />
+			<span class="card__duration"
 				>{nombreCompleto}<br />{correo}<br />Duración:
-				<strong class="card2-duration">{duracion}</strong> min.</span
+				<strong class="card__number">{duracion}</strong> min.</span
 			>
-			<span class="">Menor Tiempo</span>
+			<span class="card__duration">Menor Tiempo</span>
 		</div>
 
 		<!-- Agrega más tarjetas si es necesario -->
 	</div>
 
 	<div class="graphics">
-		<div class="cardmain__card">
+		<div class="graphics__card">
 			{#await tendenciaData}
 				<p>Loading...</p>
 			{:then tendenciaData}
@@ -158,7 +160,7 @@
 				<Tendencia transposedData={tendenciaData} />
 			{/await}
 		</div>
-		<div class="cardmain__card">
+		<div class="graphics__card">
 			{#await pieChartData}
 				<p>Loading...</p>
 			{:then pieChartData}
@@ -169,11 +171,12 @@
 	</div>
 	<footer class="footer">
 		<div class="footer--center">
-			<a class="footer__credits" href="https://github.com/JSEB99" target="_blank"
-				>Juan Sebastian Mora Tibamoso
-			</a>
+			<p class="footer__name">Juan Sebastian Mora Tibamoso</p>
 			<p class="footer__email">juan.mora02@uptc.edu.co</p>
-			<figure><img src="" alt="" /></figure>
+			<a class="footer__credits" href="https://github.com/JSEB99" target="_blank">
+				<img src={Icon} alt="github" class="footer__icon" />
+			</a>
+			
 		</div>
 	</footer>
 </div>
