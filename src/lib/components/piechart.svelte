@@ -2,7 +2,6 @@
 	import Chart from 'chart.js/auto';
 	import { onMount } from 'svelte';
 
-
 	// Define el tipo para tus datos
 	type DataItem = {
 		programa_academico: string;
@@ -40,6 +39,11 @@
 						labels: {
 							color: 'rgb(255,255,255)'
 						}
+					},
+					title: {
+						display: true,
+						text: 'Personas por programa',
+						color: 'rgb(255,255,255)'
 					}
 				}
 			}
@@ -53,3 +57,12 @@
 <div class="chart-container">
 	<canvas bind:this={canvas} />
 </div>
+
+<style>
+	.chart-container {
+		width: 560px;
+		height: 350px;
+		display: flex;
+		justify-content: center;
+	}
+</style>

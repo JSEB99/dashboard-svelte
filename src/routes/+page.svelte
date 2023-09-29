@@ -28,8 +28,8 @@
 			hoverBackgroundColor: 'rgb(0, 255, 0)'
 		}));
 
-		console.log(jsonData);
-		console.log(transposedData);
+		// console.log(jsonData);
+		// console.log(transposedData);
 		//tendenciaData = transposedData;
 		return transposedData;
 	}
@@ -39,7 +39,7 @@
 		pieChartData = getPieChartData(valorSelect);
 		await obtenerDatos();
 		await obtenerMenorTiempo();
-		console.log(valorSelect);
+		// console.log(valorSelect);
 	}
 
 	let pieChartData = getPieChartData(valorSelect);
@@ -52,7 +52,7 @@
 
 		const dataArray = Object.values(jsonData);
 
-		console.log(dataArray);
+		// console.log(dataArray);
 
 		return dataArray;
 	}
@@ -86,10 +86,10 @@
 		duracion = item.duración;
 
 		// Puedes hacer lo que necesites con estos valores aquí
-		console.log('ID:', id);
-		console.log('Nombre completo:', nombreCompleto);
-		console.log('Correo:', correo);
-		console.log('Duración:', duracion);
+		// console.log('ID:', id);
+		// console.log('Nombre completo:', nombreCompleto);
+		// console.log('Correo:', correo);
+		// console.log('Duración:', duracion);
 	}
 	onMount(obtenerMenorTiempo);
 </script>
@@ -145,7 +145,7 @@
 				>{nombreCompleto}<br />{correo}<br />Duración:
 				<strong class="card__number">{duracion}</strong> min.</span
 			>
-			<span class="card__duration">Menor Tiempo</span>
+			<span class="card__duration--title">Menor Tiempo</span>
 		</div>
 
 		<!-- Agrega más tarjetas si es necesario -->
@@ -176,7 +176,6 @@
 			<a class="footer__credits" href="https://github.com/JSEB99" target="_blank">
 				<img src={Icon} alt="github" class="footer__icon" />
 			</a>
-			
 		</div>
 	</footer>
 </div>

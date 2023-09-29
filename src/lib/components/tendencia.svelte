@@ -25,6 +25,11 @@
 						labels: {
 							color: 'rgb(255, 255, 255)'
 						}
+					},
+					title: {
+						display: true,
+						text: 'Personas por tiempo por programa',
+						color: 'rgb(255,255,255)'
 					}
 				},
 				scales: {
@@ -39,20 +44,20 @@
 						title: {
 							display: true,
 							text: 'Tiempo',
-							color: 'rgb(0, 255, 0)'
+							color: 'rgb(255,255,255)'
 						},
 						ticks: {
-							color: 'rgb(0, 255, 0)'
+							color: 'rgb(255,255,255)'
 						}
 					},
 					y: {
 						title: {
 							display: true,
 							text: 'Valor',
-							color: 'rgb(0, 255, 0)'
+							color: 'rgb(255,255,255)'
 						},
 						ticks: {
-							color: 'rgb(0, 255, 0)'
+							color: 'rgb(255,255,255)'
 						}
 					}
 				}
@@ -71,8 +76,11 @@
 	:global(body) {
 		padding: 0;
 	}
-	div {
-		width: 600px;
-		height: 300px;
+	.chart-container {
+		width: 540px;
+		height: 350px;
+		display: flex;
+		justify-content: center;
+		align-items: center;
 	}
 </style>
