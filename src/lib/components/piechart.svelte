@@ -2,6 +2,7 @@
 	import Chart from 'chart.js/auto';
 	import { onMount } from 'svelte';
 
+
 	// Define el tipo para tus datos
 	type DataItem = {
 		programa_academico: string;
@@ -52,16 +53,3 @@
 <div class="chart-container">
 	<canvas bind:this={canvas} />
 </div>
-
-<style>
-	:global(body) {
-		padding: 0;
-	}
-	div {
-		width: 500px;
-		height: 300px;
-		display: flex; /* Utilizamos flexbox para centrar vertical y horizontalmente */
-		justify-content: center; /* Centra horizontalmente */
-		align-items: center;
-	}
-</style>

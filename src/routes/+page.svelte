@@ -4,6 +4,7 @@
 	import { LogarithmicScale } from 'chart.js';
 	import Tendencia from '$lib/components/tendencia.svelte';
 	import Piechart from '$lib/components/piechart.svelte';
+	import '../styles/style.css';
 
 	let datasetInfo: DatasetInfo;
 
@@ -91,183 +92,89 @@
 	}
 	onMount(obtenerMenorTiempo);
 </script>
+<div class="container">
 
-<nav class="navbar">
-	<div class="navbar-title">CyberSecurity Event Analytics</div>
-	<div class="event-selector">
-		<label for="event-selector" id="label-selector"
-			>Selecciona un Evento <br />
-			<span class="label-span">Dando Click</span></label
-		>
-		<select
-			id="evento-selector"
-			bind:value={valorSelect}
-			on:change={() => {
-				void updateData();
-			}}
-		>
-			<option value="06">Evento 06</option>
-			<option value="08">Evento 08</option>
-			<option value="13">Evento 13</option>
-			<option value="15">Evento 15</option>
-		</select>
+	<header class="headercyber">
+		<h1 class="headercyber__title">CyberSecurity Attendance Analytics</h1>
+		<nav>
+			<div class="event">
+				<label for="event-selector" id="label-selector" class="event__title"> 
+					Selecciona un Evento <br />
+					<span class="event__click">Dando Click</span>
+				</label>
+				<select
+					id="evento-selector"
+					class="event__select"
+					bind:value={valorSelect}
+					on:change={() => {
+					void updateData();
+					}}
+					>
+					<option value="06">Evento 06</option>
+					<option value="08">Evento 08</option>
+					<option value="13">Evento 13</option>
+					<option value="15">Evento 15</option>
+				</select>
+				</div>
+		</nav>
+	</header>
+	
+	<div class="cardmain">
+	
+		<div class="cardmain__card">
+			<div class="cardmain__card--hover"></div>
+			<h2 class="card__number">{total}</h2>
+			<h2 class="card__title">Número de Asistentes</h2>
+		</div>
+	
+		<div class="cardmain__card">
+			<div class="cardmain__card--hover"></div>
+			<h2 class="card__number">{promedio}</h2>
+			<h2 class="card__title">Duración promedio</h2>
+		</div>
+	
+	
+		<div class="cardmain__card">
+			<div class="cardmain__card--hover"></div>
+			<h2 class="card__number">{std}</h2>
+			<h2 class="card__title">Desviación estandar de la duración</h2>
+		</div>
+	
+		<div class="cardmain__card">
+			<span class="card2-num"
+				>{nombreCompleto}<br />{correo}<br />Duración:
+				<strong class="card2-duration">{duracion}</strong> min.</span
+			>
+			<span class="">Menor Tiempo</span>
+		</div>
+		
+		
+		<!-- Agrega más tarjetas si es necesario -->
 	</div>
-</nav>
-
-<div class="card-grid">
-	<div class="card card1">
-		<span class="card1-num">{total}</span>
-		<span class="card1-text">Número de Asistentes</span>
+	
+	<div class="graphics">
+		<div class="cardmain__card">
+			{#await tendenciaData}
+				<p>Loading...</p>
+			{:then tendenciaData}
+				<!-- <p>Listos:</p> -->
+				<Tendencia transposedData={tendenciaData} />
+			{/await}
+		</div>
+		<div class="cardmain__card">
+			{#await pieChartData}
+				<p>Loading...</p>
+			{:then pieChartData}
+				<!-- <p>Listos:</p> -->
+				<Piechart dataArray={pieChartData} />
+			{/await}
+		</div>
 	</div>
-	<div class="card card2">
-		<span class="card1-num">{promedio}</span>
-		<span class="card1-text">Duración promedio</span>
-	</div>
-	<div class="card card3">
-		<span class="card1-num">{std}</span>
-		<span class="card1-text">Desviación estandar de la duración</span>
-	</div>
-	<div class="card card4">
-		<span class="card2-num"
-			>{nombreCompleto}<br />{correo}<br />Duración:
-			<strong class="card2-duration">{duracion}</strong> min.</span
-		>
-		<span class="card1-text">Menor Tiempo</span>
-	</div>
-	<div class="card card5">
-		{#await tendenciaData}
-			<p>Loading...</p>
-		{:then tendenciaData}
-			<!-- <p>Listos:</p> -->
-			<Tendencia transposedData={tendenciaData} />
-		{/await}
-	</div>
-	<div class="card card6">
-		{#await pieChartData}
-			<p>Loading...</p>
-		{:then pieChartData}
-			<!-- <p>Listos:</p> -->
-			<Piechart dataArray={pieChartData} />
-		{/await}
-	</div>
-	<!-- Agrega más tarjetas si es necesario -->
+	<footer class="footer">
+		<div class="footer--center">
+			<a class="footer__credits" href="https://github.com/JSEB99">Juan Sebastian Mora Tibamoso	</a>
+			<p class="footer__email">juan.mora02@uptc.edu.co</p>
+			<figure> <img src="" alt=""></figure>
+		</div>	
+	</footer>
 </div>
-
-<style>
-	/* Estilos para la barra de navegación */
-	.navbar {
-		display: flex;
-		justify-content: space-between;
-		background-color: rgba(0, 0, 0, 0.7);
-		color: white;
-		padding: 10px;
-		margin: 0 10px;
-		margin-top: 10px;
-		border-radius: 10px;
-	}
-
-	.navbar-title {
-		font-size: 24px;
-		font-weight: 700;
-		font-style: italic;
-		color: rgb(0, 255, 0);
-	}
-
-	.event-selector {
-		display: flex;
-		align-items: center;
-	}
-
-	#evento-selector {
-		background-color: rgb(8, 8, 8);
-		padding: 10px 50px;
-		border-radius: 5px;
-		border-color: rgb(0, 255, 0);
-		color: rgb(0, 255, 0);
-		font-size: 15px;
-		font-weight: 600;
-		appearance: none;
-		margin-left: 30px;
-	}
-	#label-selector {
-		font-weight: 600;
-	}
-
-	.label-span {
-		font-weight: 400;
-		font-size: 10px;
-	}
-
-	/* Estilos para la cuadrícula de tarjetas */
-	.card-grid {
-		display: grid;
-		grid-template-columns: repeat(4, 1fr);
-		grid-auto-rows: minmax(
-			190px,
-			auto
-		); /* Las filas tienen altura mínima de 100px y crecerán según el contenido */
-		gap: 10px;
-		padding: 10px;
-	}
-
-	.card {
-		background-color: rgba(0, 0, 0, 0.7);
-		padding: 20px;
-		border-radius: 10px;
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-		justify-content: space-around;
-		text-align: center;
-	}
-	.card1-num {
-		color: white;
-		font-size: 3em;
-		margin-top: 10px;
-	}
-	.card2-num {
-		color: white;
-		font-size: 1em;
-		line-height: 2;
-	}
-	.card2-duration {
-		font-size: 1.5em;
-	}
-	.card1-text {
-		color: rgb(0, 255, 0);
-	}
-
-	/* Estilos para las tarjetas específicas */
-	.card1 {
-		grid-area: 1 / 1 / 1 / 1;
-	}
-
-	.card2 {
-		grid-column: 2 / span 1;
-		grid-row: 1 / span 1;
-	}
-
-	.card3 {
-		grid-column: 3 / span 1;
-		grid-row: 1 / span 1;
-	}
-
-	.card4 {
-		grid-column: 4 / span 1;
-		grid-row: 1 / span 1;
-	}
-
-	.card5 {
-		grid-area: 2 / 1 / 4 / 3; /* Ocupa dos columnas */
-	}
-
-	.card6 {
-		grid-column: span 2; /* Ocupa dos columnas */
-		grid-row: span 2; /* Ocupa dos filas */
-	}
-
-	/* Puedes agregar más estilos para tarjetas adicionales si es necesario */
-	.card5 p {
-		margin: 0;
-	}
-</style>
